@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+
+// Use [pathname].astro to create a dynamic page
+
+export async function getStaticPaths() {
+  // Extract posts from /posts folder
+  const posts = await Astro.glob('../posts/*.md');
+
+  // For each post, return an object containing the slug as a param and the post as props
+  return posts.map((post) => ({
+    params: {
+      slug: post.frontmatter.slug,
+    },
+    props: {
+      post,
+    },
+  }));
+}
+
+// Destructure blog content and frontmatter from each post
+const { Content, frontmatter } = Astro.props.post;
+---
+
+<Layout title={frontmatter.title}>
+  <section class='page-content'>
+    <div class='container'>
+      <Card>
+        <a href='/blog' class='btn'>Go Back</a>
+        <h2>{frontmatter.title}</h2>
+        <div>
+          Written by <strong>{frontmatter.author}</strong> on {
+            new Date(frontmatter.date).toLocaleDateString()
+          }
+        </div>
+        <Content />
+      </Card>
+    </div>
+  </section>
+</Layout>

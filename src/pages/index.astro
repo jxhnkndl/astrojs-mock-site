@@ -1,1 +1,10 @@
-<h1>Hello World!</h1>
+---
+// Import layout and components
+import Layout from '../layouts/Layout.astro'
+import Showcase from '../components/Showcase.astro'
+---
+
+<Layout title="Hello">
+	<Showcase showExtra={true} />
+	<h1>Hello World!</h1>
+</Layout>

@@ -1,6 +1,7 @@
 ---
 // Import global styles
-import '../styles/global.css'
+import '../styles/global.css';
+import Header from '../components/Header.astro';
 
 // Props contains an optional title prop with a type of string
 export interface Props {
@@ -25,6 +26,7 @@ const { title = 'Astro Crash Course' } = Astro.props as Props;
     <title>{title}</title>
   </head>
   <body>
+    <Header />
     <!-- Use the <slot/> element to inject page into the layout -->
     <slot />
   </body>

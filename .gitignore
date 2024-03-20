@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # notes.txt
 notes.txt
+
+# example
+example.astro
